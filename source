@@ -1,0 +1,62 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+	int v;
+	double enter;
+	vector<string> names;
+	string n; 
+	vector<double> grades; 
+	vector<vector<double>> base; 
+	
+
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Enter student #" << (i + 1) << "'s name ==> ";
+		cin >> n;
+		names.push_back(n);
+
+		for (int p = 0; p < 5; p++)
+		{
+			cout << n << "'s grade #" << (p + 1) << "==> ";
+			cin >> enter;
+			grades.push_back(enter);
+		}
+		base.push_back(grades);
+		grades.clear();
+		cout << endl; 
+		cout << endl;
+
+	}
+	
+	double accum = 0;
+	cout << "GRADE BOOK UPDATED \n";
+	cout << "============================" << endl << endl;
+
+	vector<string> header = { "Grade" , "Average" };
+	for (int h = 0; h < 5; h++)
+	{
+		cout << "\t" << header[0] << " #" << (h + 1);
+	}
+	cout << "\t" << header[1]; 
+	cout << endl;
+	for (int o = 0; o < 5; o++)
+	{
+		cout << names[o];
+		for (int n = 0; n < 5; n++)
+		{
+			cout << "\t\t" << base[o][n];
+			accum = base[n][o] + accum;
+		
+		}
+		accum = accum / 5; 
+		cout << "\t" << accum;
+		accum = 0; 
+		cout << endl;
+	}
+
+
+	cout << "Saved! \n \n";
+}
